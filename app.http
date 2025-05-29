@@ -1,0 +1,245 @@
+@url = http://localhost:8000
+
+###
+GET {{url}}/adminprofiles
+
+###
+GET {{url}}/adminprofiles?email=Mike@gmail.com
+
+###
+GET {{url}}/adminprofiles/1
+
+
+###
+POST {{url}}/adminprofiles
+Content-Type: application/json
+
+{
+  "first_name": "Mike",
+  "last_name":"Kiprop",
+  "phone_number":"0733031821",
+  "email":"Mike@gmail.com",
+  "role":"admin"
+}
+
+###
+PATCH {{url}}/adminprofiles/1
+Content-Type: application/json
+
+{
+  "first_name": "John Doe",
+  "last_name":"1234",
+  " phone_number":"",
+  "email":"John@gmail.com",
+}
+
+
+DELETE {{url}}/adminprofiles/1
+
+
+
+###
+GET {{url}}/admins
+
+###
+GET {{url}}/admins?email=mike@gmail.com
+
+###
+POST {{url}}/admins
+Content-Type: application/json
+
+{
+  "username": "admin1",
+  "password":"password",
+  "lastlogin":"2025-04-04",
+  "adminprofileid":1
+}
+
+###
+GET {{url}}/admins/1
+
+
+
+
+###
+GET {{url}}/userprofiles
+
+###
+GET {{url}}/userprofiles?email=jack@gmail.com
+
+###
+GET {{url}}/userprofiles/1
+
+###
+POST {{url}}/userprofiles
+Content-Type: application/json
+
+{
+  "first_name": "James",
+  "last_name":" Dow",
+  "phone_number":"88998889076",
+  "email":"james@gmail.com",
+  "role":"user"
+}
+###
+DELETE {{url}}/userprofiles/1
+
+###
+GET {{url}}/users
+
+###
+GET {{url}}/users?email=mike@gmail.com
+
+###
+POST {{url}}/users
+Content-Type: application/json
+
+{
+  "username": "James",
+  "password":"password",
+  "lastlogin":"2025-04-04",
+  "userprofileid":3
+}
+
+###
+GET {{url}}/users/1
+
+###
+DELETE {{url}}/users/1
+
+
+###
+GET {{url}}/registrations
+
+
+###
+GET {{url}}/registrations/2
+
+
+###
+POST {{url}}/registrations
+Content-Type: application/json
+
+{
+  "user_id": 3,
+  "room_id":2,
+  "course_id":1,
+  "registration_date":"2025-04-04"
+}
+
+
+
+###
+GET {{url}}/rooms
+
+###
+GET {{url}}/rooms?search=single
+
+###
+GET {{url}}/rooms/2
+
+
+###
+POST {{url}}/rooms
+Content-Type: application/json
+
+{
+  "room_number": 2,
+  "seaters":2,
+  "fee":10000,
+  "room_type":"Bed-sitter"
+}
+
+
+###
+GET {{url}}/roombookings
+
+
+###
+GET {{url}}/roombookings/2
+
+
+###
+POST {{url}}/roombookings
+Content-Type: application/json
+
+{
+  "user_id": 1,
+  "room_id":2
+}
+
+###
+GET {{url}}/userfeedbacks
+
+
+###
+GET {{url}}/userfeedbacks/2
+
+
+###
+POST {{url}}/userfeedbacks
+Content-Type: application/json
+
+{
+  "user_id": 2,
+  "feedack_text":"The room is big",
+  "rating":3
+
+}
+
+###
+GET {{url}}/complaints
+
+
+###
+GET {{url}}/complaints/2
+
+
+###
+POST {{url}}/complaints
+Content-Type: application/json
+
+{
+  "user_id": 2,
+  "complaint_text":"The room  is  dirty",
+  "status":"resolved"
+}
+
+###
+GET {{url}}/useraccess
+
+
+###
+GET {{url}}/useraccess/2
+
+
+###
+POST {{url}}/useraccess
+Content-Type: application/json
+
+{
+  "user_id": 2
+}
+
+###
+GET {{url}}/courses
+
+###
+GET {{url}}/courses?search=it
+
+###
+GET {{url}}/courses/1
+
+
+###
+POST {{url}}/courses
+Content-Type: application/json
+
+{
+  "course_name": "IT",
+  "course_duration":"2yrs",
+  "course_fee":50000
+}
+
+
+

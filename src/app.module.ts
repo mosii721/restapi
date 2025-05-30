@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module,NestModule,MiddlewareConsumer } from '@nestjs/common';
 import { CoursesModule } from './courses/courses.module';
 import { RoomsModule } from './rooms/rooms.module';
 import { ComplaintsModule } from './complaints/complaints.module';
@@ -10,9 +10,7 @@ import { UsersModule } from './users/users.module';
 import { UserprofilesModule } from './userprofiles/userprofiles.module';
 import { RoombookingsModule } from './roombookings/roombookings.module';
 import { UseraccessModule } from './useraccess/useraccess.module';
-import { MiddlewareConsumer } from '@nestjs/common';
 import { LoggerMiddleware } from './logger.middleware';
-import { NestModule } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { DatabaseModule } from './database/database.module';
 

@@ -4,7 +4,6 @@ import { RoomsController } from './rooms.controller';
 import { DatabaseModule } from 'src/database/database.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Room } from './entities/room.entity';
-import { Roombooking } from 'src/roombookings/entities/roombooking.entity';
 
 @Module({
   imports:[DatabaseModule,TypeOrmModule.forFeature([Room])],

@@ -1,11 +1,10 @@
 
 import { Complaint } from "src/complaints/entities/complaint.entity";
-import { Course } from "src/courses/entities/course.entity";
 import { Registration } from "src/registrations/entities/registration.entity";
 import { Useraccess } from "src/useraccess/entities/useraccess.entity";
 import { Userfeedback } from "src/userfeedbacks/entities/userfeedback.entity";
 import { Userprofile } from "src/userprofiles/entities/userprofile.entity";
-import { Column, Entity, OneToOne, PrimaryGeneratedColumn, Relation, JoinColumn, OneToMany, ManyToMany, JoinTable } from "typeorm";
+import { Column, Entity, OneToOne, PrimaryGeneratedColumn, Relation, JoinColumn, OneToMany } from "typeorm";
 
 @Entity()
 export class User {

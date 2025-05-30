@@ -16,7 +16,7 @@ export class ComplaintsService {
     const existUser  = await this.userRepository.findOneBy({id: createComplaintDto.user_id});
            
     if(!existUser){
-      throw new NotFoundException(`Profile  with  id  ${createComplaintDto.user_id}  not found`);
+      throw new NotFoundException(`Complaint  with  id  ${createComplaintDto.user_id}  not found`);
     }
     const newComplaint = this.complaintRepository.create({
       complaint_text:createComplaintDto.complaint_text,

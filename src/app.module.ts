@@ -41,6 +41,6 @@ import { DatabaseModule } from './database/database.module';
 })
 export class AppModule implements NestModule{
   configure(consumer:MiddlewareConsumer){
-    consumer.apply(LoggerMiddleware).forRoutes('admins')
+    consumer.apply(LoggerMiddleware).forRoutes('admins','adminprofiles','complaints','courses','registrations','roombookings','rooms','useraccess','userfeedbacks','userprofiles','users')
   }
 }

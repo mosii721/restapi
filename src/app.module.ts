@@ -13,6 +13,7 @@ import { UseraccessModule } from './useraccess/useraccess.module';
 import { LoggerMiddleware } from './logger.middleware';
 import { ConfigModule } from '@nestjs/config';
 import { DatabaseModule } from './database/database.module';
+import { SeedModule } from './seed/seed.module';
 
 
 @Module({
@@ -33,6 +34,7 @@ import { DatabaseModule } from './database/database.module';
     RoombookingsModule,
     UseraccessModule,
     DatabaseModule,
+    SeedModule,
   ],
   controllers: [],
   providers: [],

@@ -44,6 +44,9 @@ const newUserAccess = this.useraccessRepository.create({
 return await this.useraccessRepository.save(newUserAccess);
 }
 
+async findAll() {
+    return await this.useraccessRepository.find({relations:['users']});
+  }
   async findOne(id: number) {
     return await  this.useraccessRepository.find({
       where:{id},

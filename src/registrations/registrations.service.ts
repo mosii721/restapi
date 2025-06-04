@@ -31,10 +31,13 @@ export class RegistrationsService {
             return  await this.registrationRepository.save(newRegistartion)
           }
 
+    async findAll() {
+    return await this.registrationRepository.find({relations:['user','courses']});
+  }
   async findOne(id: number) {
     return await  this.registrationRepository.find({
       where:{id},
-        relations:['user','course']
+        relations:['user','courses']
     });
   }
 

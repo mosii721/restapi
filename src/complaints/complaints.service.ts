@@ -26,6 +26,9 @@ export class ComplaintsService {
     return  await this.complaintRepository.save(newComplaint)
   }
 
+  async findAll() {
+    return await this.complaintRepository.find({relations:['users']});
+  }
 
   async findOne(id: number) {
     return await  this.complaintRepository.find({

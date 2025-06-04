@@ -21,6 +21,11 @@ export class UserfeedbacksController {
     return this.userfeedbacksService.create(createUserfeedbackDto);
   }
 
+  @Get()
+    findAll() {
+      return this.userfeedbacksService.findAll();
+    }
+
   @Get(':id')
   findOne(@Param('id',ParseIntPipe) id: number) {
     return this.userfeedbacksService.findOne(id);

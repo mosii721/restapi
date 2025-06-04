@@ -12,7 +12,11 @@ export class RegistrationsController {
     return this.registrationsService.create(createRegistrationDto);
   }
 
- 
+ @Get()
+    findAll() {
+      return this.registrationsService.findAll();
+    }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.registrationsService.findOne(+id);

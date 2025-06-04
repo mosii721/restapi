@@ -12,6 +12,11 @@ export class UseraccessController {
     return this.useraccessService.create(createUseraccessDto);
   }
 
+  @Get()
+    findAll() {
+      return this.useraccessService.findAll();
+    }
+
   @Get(':id')
   findOne(@Param('id',ParseIntPipe) id: number) {
     return this.useraccessService.findOne(id);

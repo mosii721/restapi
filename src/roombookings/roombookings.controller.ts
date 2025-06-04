@@ -12,6 +12,11 @@ export class RoombookingsController {
     return this.roombookingsService.create(createRoombookingDto);
   }
 
+  @Get()
+    findAll() {
+      return this.roombookingsService.findAll();
+    }
+
   @Get(':id')
   findOne(@Param('id',ParseIntPipe) id: number) {
     return this.roombookingsService.findOne(id);

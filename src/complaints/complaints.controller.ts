@@ -21,6 +21,11 @@ export class ComplaintsController {
     return this.complaintsService.create(createComplaintDto);
   }
 
+  @Get()
+    findAll() {
+      return this.complaintsService.findAll();
+    }
+
   @Get(':id')
   findOne(@Param('id',ParseIntPipe) id: number) {
     return this.complaintsService.findOne(+id);

@@ -26,6 +26,10 @@ export class UserfeedbacksService {
            return  await this.userfeedbackRepository.save(newUserfeedback)
          }
       
+  async findAll() {
+    return await this.userfeedbackRepository.find({relations:['users']});
+  }
+
   async findOne(id: number) {
     return await  this.userfeedbackRepository.find({
       where:{id},

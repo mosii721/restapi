@@ -1,5 +1,35 @@
 @url = http://localhost:8000
 
+
+###
+
+POST {{ url}}/cache
+Content-Type: application/json
+
+{
+  "key": "example_key",
+  "value": "example_value",
+  "ttl":30
+}
+
+###
+
+POST {{ url}}/cache
+Content-Type: application/json
+
+{
+  "key": "example_key_2",
+  "value": "example_value_2"
+}
+
+###
+GET {{url}}/cache/example_key_2
+
+###
+DELETE {{url}}/cache/example_key
+
+###
+POST {{url}}/seed
 ###
 GET {{url}}/adminprofiles
 

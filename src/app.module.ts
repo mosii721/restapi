@@ -11,9 +11,13 @@ import { UserprofilesModule } from './userprofiles/userprofiles.module';
 import { RoombookingsModule } from './roombookings/roombookings.module';
 import { UseraccessModule } from './useraccess/useraccess.module';
 import { LoggerMiddleware } from './logger.middleware';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { DatabaseModule } from './database/database.module';
 import { SeedModule } from './seed/seed.module';
+import { CacheMeModule } from './cache-me/cache-me.module';
+import { CacheInterceptor, CacheModule } from '@nestjs/cache-manager';
+import {Keyv, createKeyv} from '@keyv/redis';
+import { CacheableMemory } from 'cacheable';
 
 
 @Module({
@@ -35,9 +39,29 @@ import { SeedModule } from './seed/seed.module';
     UseraccessModule,
     DatabaseModule,
     SeedModule,
+    CacheMeModule,
+    CacheModule.registerAsync({
+      imports:[ConfigModule],
+      inject: [ConfigService],
+      isGlobal:true,
+      useFactory:(configService:ConfigService)  =>  {
+        return {
+          ttl:120000,
+          stores:[
+            new Keyv  ({
+              store: new CacheableMemory ({ttl:30000,lruSize:5000}),
+            }),
+            createKeyv(configService.getOrThrow<string>('REDIS_URL')),
+          ],
+        };
+      },
+    }),
   ],
   controllers: [],
-  providers: [],
+  providers: [{
+    provide: 'APP_INTERCEPTOR',
+    useClass: CacheInterceptor,
+  }],
 })
 export class AppModule implements NestModule{
   configure(consumer:MiddlewareConsumer){

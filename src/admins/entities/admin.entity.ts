@@ -15,6 +15,7 @@ export class Admin {
         createdAt:Date;
         @Column({type:'timestamp', default:() => 'CURRENT_TIMESTAMP',onUpdate:'CURRENT_TIMESTAMP'})
         updatedAt:Date;
+        
 
         @OneToOne(() => Adminprofile, (adminprofile)  =>  adminprofile.admin, {
                 cascade:true,

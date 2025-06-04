@@ -26,6 +26,10 @@ export class RoombookingsService {
       }
     
 
+  async findAll() {
+    return await this.roombookingRepository.find({relations:['rooms']});
+  }
+
   async findOne(id: number) {
     return await  this.roombookingRepository.find({
       where:{id},

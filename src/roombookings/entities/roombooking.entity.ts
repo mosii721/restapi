@@ -1,13 +1,11 @@
 import { Room } from "src/rooms/entities/room.entity";
+import { User } from "src/users/entities/user.entity";
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn, Relation } from "typeorm";
 
 @Entity()
 export class Roombooking {
     @PrimaryGeneratedColumn()
     id:number
-
-    @Column()
-    user_id:number;
 
     @Column({type:'timestamp', default:() => 'CURRENT_TIMESTAMP'})
     booking_date:Date;
@@ -20,4 +18,7 @@ export class Roombooking {
 
     @ManyToOne(()=>Room,(room)  => room.roombooking)
     rooms:Relation<Room>
+
+    @ManyToOne(()=>User,(user)  => user.userfeedback)
+    users:Relation<User>
 }

@@ -1,10 +1,11 @@
 
+import { Profile } from "src/profiles/entities/profile.entity";
 import { Complaint } from "src/complaints/entities/complaint.entity";
 import { Registration } from "src/registrations/entities/registration.entity";
 import { Useraccess } from "src/useraccess/entities/useraccess.entity";
 import { Userfeedback } from "src/userfeedbacks/entities/userfeedback.entity";
-import { Userprofile } from "src/userprofiles/entities/userprofile.entity";
 import { Column, Entity, OneToOne, PrimaryGeneratedColumn, Relation, JoinColumn, OneToMany } from "typeorm";
+import { Roombooking } from "src/roombookings/entities/roombooking.entity";
 
 @Entity()
 export class User {
@@ -12,8 +13,6 @@ export class User {
         id:number;
         @Column()
         username:string;
-        @Column()
-        password:string;
         @Column('date')
         lastlogin:string;
         @Column({type:'timestamp', default:() => 'CURRENT_TIMESTAMP'})
@@ -21,12 +20,12 @@ export class User {
         @Column({type:'timestamp', default:() => 'CURRENT_TIMESTAMP',onUpdate:'CURRENT_TIMESTAMP'})
         updatedAt:Date;
 
-        @OneToOne(() => Userprofile, (userprofile)  =>  userprofile.user,{
+        @OneToOne(() => Profile, (userprofile)  =>  userprofile.user,{
                 cascade:true,
                 onDelete:'CASCADE',
         })
         @JoinColumn()
-        userprofile:Relation<Userprofile>
+        userprofile:Relation<Profile>
 
         @OneToOne(() => Registration, (registration)  =>  registration.user)
         registration:Relation<Registration>
@@ -36,6 +35,9 @@ export class User {
 
         @OneToMany(() => Complaint,(complaint) => complaint.users)
         complaint:Complaint[]
+
+        @OneToMany(() => Roombooking,(roombooking) => roombooking.users)
+        roombooking:Roombooking[]
 
         @OneToMany(() => Useraccess,(useraccess) => useraccess.users)
         useraccess:Useraccess[]

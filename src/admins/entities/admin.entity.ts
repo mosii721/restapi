@@ -1,5 +1,5 @@
 import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn, Relation } from "typeorm";
-import { Adminprofile } from '../../adminprofiles/entities/adminprofile.entity';
+import { Profile } from '../../profiles/entities/profile.entity';
 
 @Entity()
 export class Admin {
@@ -7,8 +7,6 @@ export class Admin {
         id:number;
         @Column()
         username:string;
-        @Column()
-        password:string;
         @Column('date')
         lastlogin:string;
         @Column({type:'timestamp', default:() => 'CURRENT_TIMESTAMP'})
@@ -17,10 +15,10 @@ export class Admin {
         updatedAt:Date;
         
 
-        @OneToOne(() => Adminprofile, (adminprofile)  =>  adminprofile.admin, {
+        @OneToOne(() => Profile, (adminprofile)  =>  adminprofile.admin, {
                 cascade:true,
                 onDelete:'CASCADE',
         })
         @JoinColumn()
-        adminprofile:Relation<Adminprofile>
+        adminprofile:Relation<Profile>
 }

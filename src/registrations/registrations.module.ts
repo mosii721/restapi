@@ -6,10 +6,12 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Registration } from './entities/registration.entity';
 import { User } from 'src/users/entities/user.entity';
 import { Course } from 'src/courses/entities/course.entity';
+import { RolesGuard } from 'src/auth/guards';
+import { Profile } from 'src/profiles/entities/profile.entity';
 
 @Module({
-  imports:[DatabaseModule,TypeOrmModule.forFeature([Registration,User,Course])],
+  imports:[DatabaseModule,TypeOrmModule.forFeature([Registration,User,Course,Profile])],
   controllers: [RegistrationsController],
-  providers: [RegistrationsService],
+  providers: [RegistrationsService,RolesGuard],
 })
 export class RegistrationsModule {}

@@ -20,7 +20,7 @@ export class RegistrationsService {
     const existCourse  = await this.courseRepository.findOneBy({id: createRegistrationDto.course_id});
         
             if(!existUser || !existCourse){
-              throw new NotFoundException(`Profile  with  id  ${createRegistrationDto.user_id}  &  ${createRegistrationDto.course_id}  not found`);
+              throw new NotFoundException(`User  with  id  ${createRegistrationDto.user_id}  &  ${createRegistrationDto.course_id}  not found`);
             }
             const newRegistartion =this.registrationRepository.create({
               room_id:createRegistrationDto.room_id,

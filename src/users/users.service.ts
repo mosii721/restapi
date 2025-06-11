@@ -3,25 +3,24 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
-import { Userprofile } from 'src/userprofiles/entities/userprofile.entity';
 import { Repository } from 'typeorm';
+import { Profile } from 'src/profiles/entities/profile.entity';
 
 
 @Injectable()
 export class UsersService {
 
   constructor(@InjectRepository(User) private userRepository:Repository<User>,
-    @InjectRepository(Userprofile) private userprofileRepository:Repository<Userprofile>,){}
+    @InjectRepository(Profile) private profileRepository:Repository<Profile>,){}
 
   async create(createUserDto: CreateUserDto) {
-    const existProfile  = await this.userprofileRepository.findOneBy({id: createUserDto.userprofileid});
+    const existProfile  = await this.profileRepository.findOneBy({id: createUserDto.userprofileid});
     
         if(!existProfile){
           throw new NotFoundException(`Profile  with  id  ${createUserDto.userprofileid}  not found`);
         }
         const newUser = this.userRepository.create({
           username:createUserDto.username,
-          password:createUserDto.password,
           lastlogin:createUserDto.lastlogin,
           userprofile:existProfile,
         })
@@ -32,16 +31,16 @@ export class UsersService {
     if (name) {
       return await  this.userRepository.find({
         where:{userprofile:{first_name:name},},
-        relations:['userprofile','registration','userfeedback','complaint','useraccess']
+        relations:['userprofile','registration','userfeedback','complaint','useraccess','roombooking']
       });
     }
-    return await this.userRepository.find({relations:['userprofile','registration','userfeedback','complaint','useraccess']});
+    return await this.userRepository.find({relations:['userprofile','registration','userfeedback','complaint','useraccess','roombooking']});
   }
 
   async findOne(id: number) {
     return await  this.userRepository.find({
       where:{id},
-        relations:['userprofile','registration','userfeedback','complaint']
+        relations:['userprofile','registration','userfeedback','complaint','roombooking']
     });
   }
 

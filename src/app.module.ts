@@ -4,20 +4,24 @@ import { RoomsModule } from './rooms/rooms.module';
 import { ComplaintsModule } from './complaints/complaints.module';
 import { UserfeedbacksModule } from './userfeedbacks/userfeedbacks.module';
 import { AdminsModule } from './admins/admins.module';
-import { AdminprofilesModule } from './adminprofiles/adminprofiles.module';
+import { ProfilesModule } from './profiles/profiles.module';
 import { RegistrationsModule } from './registrations/registrations.module';
 import { UsersModule } from './users/users.module';
-import { UserprofilesModule } from './userprofiles/userprofiles.module';
 import { RoombookingsModule } from './roombookings/roombookings.module';
 import { UseraccessModule } from './useraccess/useraccess.module';
 import { LoggerMiddleware } from './logger.middleware';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { DatabaseModule } from './database/database.module';
 import { SeedModule } from './seed/seed.module';
-import { CacheMeModule } from './cache-me/cache-me.module';
 import { CacheInterceptor, CacheModule } from '@nestjs/cache-manager';
 import {Keyv, createKeyv} from '@keyv/redis';
 import { CacheableMemory } from 'cacheable';
+import { AuthModule } from './auth/auth.module';
+import { APP_GUARD } from '@nestjs/core';
+import { AtGuard } from './auth/guards';
+import { LogsModule } from './logs/logs.module';
+import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
+
 
 
 @Module({
@@ -31,15 +35,13 @@ import { CacheableMemory } from 'cacheable';
     ComplaintsModule,
     UserfeedbacksModule,
     AdminsModule,
-    AdminprofilesModule,
+    ProfilesModule,
     RegistrationsModule,
     UsersModule,
-    UserprofilesModule,
     RoombookingsModule,
     UseraccessModule,
     DatabaseModule,
     SeedModule,
-    CacheMeModule,
     CacheModule.registerAsync({
       imports:[ConfigModule],
       inject: [ConfigService],
@@ -56,15 +58,33 @@ import { CacheableMemory } from 'cacheable';
         };
       },
     }),
+    AuthModule,
+    LogsModule,
+    ThrottlerModule.forRoot({
+      throttlers:[{
+        ttl:60000,
+        limit:10,
+        ignoreUserAgents:[/^curl\//,/^PostmanRuntime\//], // excludes them from rate-limiting
+      }]
+    })
   ],
   controllers: [],
   providers: [{
     provide: 'APP_INTERCEPTOR',
-    useClass: CacheInterceptor,
-  }],
+    useClass: CacheInterceptor,// global interceptor to cache responses
+  },
+  {
+    provide: APP_GUARD,
+    useClass: ThrottlerGuard,// global guard to limit requests to 10 per minute
+  },
+  {
+    provide: APP_GUARD,
+    useClass: AtGuard,  // global guard to protect all routes with access token
+  },
+],
 })
 export class AppModule implements NestModule{
   configure(consumer:MiddlewareConsumer){
-    consumer.apply(LoggerMiddleware).forRoutes('admins','adminprofiles','complaints','courses','registrations','roombookings','rooms','useraccess','userfeedbacks','userprofiles','users')
+    consumer.apply(LoggerMiddleware).forRoutes('admins','profiles','complaints','courses','registrations','roombookings','rooms','useraccess','userfeedbacks','users')
   }
 }

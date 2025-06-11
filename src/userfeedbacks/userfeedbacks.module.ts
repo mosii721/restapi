@@ -5,10 +5,12 @@ import { DatabaseModule } from 'src/database/database.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Userfeedback } from './entities/userfeedback.entity';
 import { User } from 'src/users/entities/user.entity';
+import { RolesGuard } from 'src/auth/guards';
+import { Profile } from 'src/profiles/entities/profile.entity';
 
 @Module({
-  imports:[DatabaseModule,TypeOrmModule.forFeature([Userfeedback,User])],
+  imports:[DatabaseModule,TypeOrmModule.forFeature([Userfeedback,User,Profile])],
   controllers: [UserfeedbacksController],
-  providers: [UserfeedbacksService],
+  providers: [UserfeedbacksService,RolesGuard],
 })
 export class UserfeedbacksModule {}

@@ -1,75 +1,131 @@
-@url = http://localhost:8000
+@url = http://localhost:8000/api/v1                 
+@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoibWlrZUBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDk1ODg0NDMsImV4cCI6MTc0OTU4OTM0M30.0YgDJEpYeYYm5ly94eyLWB-pPLbJ1hE4ZlcrQxsFSeA
+@refreshToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoibWlrZUBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDk1ODg0NDMsImV4cCI6MTc1MDE5MzI0M30.fShPulchxU-70u7N9CwsHDDzxdjsJHVgeV2nv42qODA
 
+@useraccessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsImVtYWlsIjoia2lwcm9wQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzQ5NTAxNDM3LCJleHAiOjE3NDk1MDIzMzd9.EAepyksiISalIsTjZYadHIhGMNDAOkwnaXQrQl3SGsg
+@userrefreshToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsImVtYWlsIjoia2lwcm9wQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzQ5NTAxNDM3LCJleHAiOjE3NTAxMDYyMzd9.QFext7YQhdFhf0uHF_VlD7lsaRlF2VGIsOkXyephBNY
+
+@guestaccessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjI4LCJlbWFpbCI6Im1rQGdtYWlsLmNvbSIsInJvbGUiOiJndWVzdCIsImlhdCI6MTc0OTU4ODU1NSwiZXhwIjoxNzQ5NTg5NDU1fQ.1G1j9EmUd-GrQ1XJoMxwg4-HeUZE0MSrRLu2WpL_-ZU
+@guestrefreshToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjI4LCJlbWFpbCI6Im1rQGdtYWlsLmNvbSIsInJvbGUiOiJndWVzdCIsImlhdCI6MTc0OTU4ODU1NSwiZXhwIjoxNzUwMTkzMzU1fQ.xON4gjrr_jTTXBYdj39kIjd9EhPDHs-EoX6ZexFwJ08
 
 ###
-
-POST {{ url}}/cache
+//admin
+POST {{ url}}/auth/signin
 Content-Type: application/json
 
 {
-  "key": "example_key",
-  "value": "example_value",
-  "ttl":30
+  "email": "mike@gmail.com",
+  "password": "password"
 }
 
 ###
-
-POST {{ url}}/cache
+//user
+POST {{ url}}/auth/signin
 Content-Type: application/json
 
 {
-  "key": "example_key_2",
-  "value": "example_value_2"
+  "email": "kiprop@gmail.com",
+  "password": "password"
 }
 
 ###
-GET {{url}}/cache/example_key_2
+//guest
+POST {{ url}}/auth/signin
+Content-Type: application/json
+
+{
+  "email": "mk@gmail.com",
+  "password": "password"
+}
 
 ###
-DELETE {{url}}/cache/example_key
+GET  {{ url}}/auth/signout/1
+
+
+###
+GET  {{ url}}/auth/refresh?id=1
+Authorization: Bearer {{refreshToken}}
+
 
 ###
 POST {{url}}/seed
-###
-GET {{url}}/adminprofiles
+Authorization: Bearer {{accessToken}}
 
 ###
-GET {{url}}/adminprofiles?email=Mike@gmail.com
+GET {{url}}/profiles
+Authorization: Bearer {{accessToken}}
 
 ###
-GET {{url}}/adminprofiles/1
-
+GET {{url}}/profiles
+Authorization: Bearer {{useraccessToken}}
 
 ###
-POST {{url}}/adminprofiles
+GET {{url}}/profiles
+Authorization: Bearer {{guestaccessToken}}
+
+###
+GET {{url}}/profiles?email=Mike@gmail.com
+
+###
+GET {{url}}/profiles/1
+Authorization: Bearer {{accessToken}}
+
+###
+POST {{url}}/profiles
 Content-Type: application/json
 
 {
   "first_name": "Mike",
   "last_name":"Kiprop",
   "phone_number":"0733031821",
-  "email":"Mike@gmail.com",
+  "email":"mike@gmail.com",
+  "password":"password",
   "role":"admin"
 }
 
 ###
-PATCH {{url}}/adminprofiles/1
+POST {{url}}/profiles
 Content-Type: application/json
 
 {
-  "first_name": "John Doe",
-  "last_name":"1234",
-  " phone_number":"",
-  "email":"John@gmail.com",
+  "first_name": "Mike",
+  "last_name":"Kiprop",
+  "phone_number":"0733031821",
+  "email":"kiprop@gmail.com",
+  "password":"password",
+  "role":"user"
 }
 
+###
+POST {{url}}/profiles
+Content-Type: application/json
 
-DELETE {{url}}/adminprofiles/1
+{
+  "first_name": "Mike",
+  "last_name":"Kiprop",
+  "phone_number":"0733031821",
+  "email":"mk@gmail.com",
+  "password":"password",
+  "role":"guest"
+}
+
+###
+PATCH {{url}}/profiles/1
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+  "first_name":"mike"
+}
+
+###
+DELETE {{url}}/profiles/1
 
 
 
 ###
 GET {{url}}/admins
+Authorization: Bearer {{accessToken}}
 
 ###
 GET {{url}}/admins?email=mike@gmail.com
@@ -77,10 +133,10 @@ GET {{url}}/admins?email=mike@gmail.com
 ###
 POST {{url}}/admins
 Content-Type: application/json
+Authorization: Bearer {{accessToken}}
 
 {
   "username": "admin1",
-  "password":"password",
   "lastlogin":"2025-04-04",
   "adminprofileid":1
 }
@@ -88,34 +144,12 @@ Content-Type: application/json
 ###
 GET {{url}}/admins/1
 
-
-
-
 ###
-GET {{url}}/userprofiles
-
-###
-GET {{url}}/userprofiles?email=jack@gmail.com
-
-###
-GET {{url}}/userprofiles/1
-
-###
-POST {{url}}/userprofiles
-Content-Type: application/json
-
-{
-  "first_name": "James",
-  "last_name":" Dow",
-  "phone_number":"88998889076",
-  "email":"james@gmail.com",
-  "role":"user"
-}
-###
-DELETE {{url}}/userprofiles/1
+DELETE {{url}}/admins/1
 
 ###
 GET {{url}}/users
+Authorization: Bearer {{accessToken}}
 
 ###
 GET {{url}}/users?email=mike@gmail.com
@@ -123,12 +157,12 @@ GET {{url}}/users?email=mike@gmail.com
 ###
 POST {{url}}/users
 Content-Type: application/json
+Authorization: Bearer {{accessToken}}
 
 {
-  "username": "James",
-  "password":"password",
+  "username": "mike",
   "lastlogin":"2025-04-04",
-  "userprofileid":3
+  "userprofileid":2
 }
 
 ###
@@ -140,6 +174,7 @@ DELETE {{url}}/users/1
 
 ###
 GET {{url}}/registrations
+Authorization: Bearer {{accessToken}}
 
 
 ###
@@ -151,8 +186,8 @@ POST {{url}}/registrations
 Content-Type: application/json
 
 {
-  "user_id": 3,
-  "room_id":2,
+  "user_id": 1,
+  "room_id":1,
   "course_id":1,
   "registration_date":"2025-04-04"
 }
@@ -161,6 +196,7 @@ Content-Type: application/json
 
 ###
 GET {{url}}/rooms
+Authorization: Bearer {{accessToken}}
 
 ###
 GET {{url}}/rooms?search=single
@@ -172,9 +208,10 @@ GET {{url}}/rooms/2
 ###
 POST {{url}}/rooms
 Content-Type: application/json
+Authorization: Bearer {{accessToken}}
 
 {
-  "room_number": 2,
+  "room_number": 3,
   "seaters":2,
   "fee":10000,
   "room_type":"Bed-sitter"
@@ -183,23 +220,27 @@ Content-Type: application/json
 
 ###
 GET {{url}}/roombookings
+Authorization: Bearer {{accessToken}}
 
 
 ###
 GET {{url}}/roombookings/2
+Authorization: Bearer {{accessToken}}
 
 
 ###
 POST {{url}}/roombookings
 Content-Type: application/json
+Authorization: Bearer {{accessToken}}
 
 {
   "user_id": 1,
-  "room_id":2
+  "room_id":1
 }
 
 ###
 GET {{url}}/userfeedbacks
+Authorization: Bearer {{accessToken}}
 
 
 ###
@@ -219,6 +260,7 @@ Content-Type: application/json
 
 ###
 GET {{url}}/complaints
+Authorization: Bearer {{guestaccessToken}}
 
 
 ###

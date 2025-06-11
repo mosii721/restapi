@@ -4,23 +4,22 @@ import { UpdateAdminDto } from './dto/update-admin.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Admin } from './entities/admin.entity';
 import { Repository } from 'typeorm';
-import { Adminprofile } from 'src/adminprofiles/entities/adminprofile.entity';
+import { Profile } from 'src/profiles/entities/profile.entity';
 
 @Injectable()
 export class AdminsService {
 
   constructor(@InjectRepository(Admin) private adminRepository:Repository<Admin>,
-  @InjectRepository(Adminprofile) private adminprofileRepository:Repository<Adminprofile>){}
+  @InjectRepository(Profile) private profileRepository:Repository<Profile>){}
 
   async create(createAdminDto: CreateAdminDto) {
-    const existProfile  = await this.adminprofileRepository.findOneBy({id: createAdminDto.adminprofileid});
+    const existProfile  = await this.profileRepository.findOneBy({id: createAdminDto.adminprofileid});
 
     if(!existProfile){
       throw new NotFoundException(`Profile  with  id  ${createAdminDto.adminprofileid}  not found`);
     }
     const newAdmin = this.adminRepository.create({
       username: createAdminDto.username,
-      password: createAdminDto.password,
       lastlogin:createAdminDto.lastlogin,
       adminprofile:existProfile,
     })

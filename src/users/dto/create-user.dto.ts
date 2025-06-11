@@ -7,10 +7,6 @@ export class CreateUserDto {
     @IsString()
     username:string;
 
-    @ApiProperty({description: 'Password for the user account', example: 'securepassword'})
-    @IsString()
-    password:string;
-
     @ApiProperty({description: 'Last login date and time in ISO format', example: "2025-04-04"})
     @IsDateString()
     lastlogin:string;

@@ -1,0 +1,172 @@
+
+        
+
+        6/10/25, 11:18:29 AM -IP: ::ffff:127.0.0.1 - ERROR: {"message":"Unauthorized","statusCode":401} -path: /auth/signout/1
+
+        6/10/25, 2:11:43 PM -IP: ::ffff:127.0.0.1 - ERROR: {"message":"Unauthorized","statusCode":401} -path: /profiles
+
+        6/10/25, 2:12:02 PM -IP: ::ffff:127.0.0.1 - ERROR: {"message":"Unauthorized","statusCode":401} -path: /profiles/1
+
+        6/10/25, 2:17:01 PM -IP: ::ffff:127.0.0.1 - ERROR: {"message":"Unexpected non-whitespace character after JSON at position 34 (line 6 column 1)","error":"Bad Request","statusCode":400} -path: /profiles/1
+
+        6/10/25, 2:17:40 PM -IP: ::ffff:127.0.0.1 - ERROR: {"message":"Unexpected non-whitespace character after JSON at position 33 (line 6 column 1)","error":"Bad Request","statusCode":400} -path: /profiles/1
+
+        6/10/25, 2:17:41 PM -IP: ::ffff:127.0.0.1 - ERROR: {"message":"Unexpected non-whitespace character after JSON at position 33 (line 6 column 1)","error":"Bad Request","statusCode":400} -path: /profiles/1
+
+        6/10/25, 2:25:58 PM -IP: ::ffff:127.0.0.1 - ERROR: {"message":"Unauthorized","statusCode":401} -path: /profiles/1
+
+        6/10/25, 2:35:03 PM -IP: ::ffff:127.0.0.1 - ERROR: {"message":"Unauthorized","statusCode":401} -path: /seed
+
+        6/10/25, 2:58:08 PM -IP: ::ffff:127.0.0.1 - ERROR: {"message":"Unauthorized","statusCode":401} -path: /admins
+
+        6/10/25, 2:59:48 PM -IP: ::ffff:127.0.0.1 - ERROR: {"message":"Unauthorized","statusCode":401} -path: /admins
+
+        6/10/25, 3:04:54 PM -IP: ::ffff:127.0.0.1 - ERROR: {"message":"Unauthorized","statusCode":401} -path: /admins
+
+        6/10/25, 3:18:02 PM -IP: ::ffff:127.0.0.1 - ERROR: {"message":"Unauthorized","statusCode":401} -path: /admins
+
+        6/10/25, 3:18:04 PM -IP: ::ffff:127.0.0.1 - ERROR: {"message":"Unauthorized","statusCode":401} -path: /admins
+
+        6/10/25, 3:18:06 PM -IP: ::ffff:127.0.0.1 - ERROR: {"message":"Unauthorized","statusCode":401} -path: /admins
+
+        6/10/25, 3:18:08 PM -IP: ::ffff:127.0.0.1 - ERROR: {"message":"Unauthorized","statusCode":401} -path: /admins
+
+        6/10/25, 3:18:10 PM -IP: ::ffff:127.0.0.1 - ERROR: {"message":"Unauthorized","statusCode":401} -path: /admins
+
+        6/10/25, 3:18:12 PM -IP: ::ffff:127.0.0.1 - ERROR: {"message":"Unauthorized","statusCode":401} -path: /admins
+
+        6/10/25, 3:18:13 PM -IP: ::ffff:127.0.0.1 - ERROR: {"message":"Unauthorized","statusCode":401} -path: /admins
+
+        6/10/25, 3:18:14 PM -IP: ::ffff:127.0.0.1 - ERROR: {"message":"Unauthorized","statusCode":401} -path: /admins
+
+        6/10/25, 3:18:15 PM -IP: ::ffff:127.0.0.1 - ERROR: {"message":"Unauthorized","statusCode":401} -path: /admins
+
+        6/10/25, 3:18:16 PM -IP: ::ffff:127.0.0.1 - ERROR: {"message":"Unauthorized","statusCode":401} -path: /admins
+
+        6/10/25, 3:18:17 PM -IP: ::ffff:127.0.0.1 - ERROR: ThrottlerException: Too Many Requests -path: /admins
+
+        6/10/25, 3:38:37 PM -IP: ::ffff:127.0.0.1 - ERROR: {"message":"Cannot POST /api/v1/auth/signin","error":"Not Found","statusCode":404} -path: /api/v1/auth/signin
+
+        6/10/25, 4:13:20 PM -IP: ::1 - ERROR: {"message":"Cannot GET /api/v1/api/v1/admins/1","error":"Not Found","statusCode":404} -path: /api/v1/api/v1/admins/1
+
+        6/10/25, 4:37:36 PM -IP: ::1 - ERROR: {"message":"Unauthorized","statusCode":401} -path: /api/v1/admins/1
+
+        6/10/25, 5:00:17 PM -IP: ::1 - ERROR: {"message":"Unauthorized","statusCode":401} -path: /api/v1/complaints
+
+        6/10/25, 5:00:48 PM -IP: ::1 - ERROR: {"message":"Unauthorized","statusCode":401} -path: /api/v1/auth/refresh?id=1
+
+        6/10/25, 5:01:12 PM -IP: ::1 - ERROR: {"message":"User with  email Mike@gmail.comNot Found ","error":"Not Found","statusCode":404} -path: /api/v1/auth/signin
+
+        6/10/25, 5:07:12 PM -IP: ::1 - ERROR: first_name is not defined -path: /api/v1/profiles?email=mike
+
+        6/10/25, 5:55:58 PM -IP: ::ffff:127.0.0.1 - ERROR: {"message":"Cannot GET /fifa/fifalive/gen4title/data/disabledregion.json","error":"Not Found","statusCode":404} -path: /fifa/fifalive/gen4title/data/disabledregion.json
+
+        6/10/25, 7:08:56 PM -IP: ::ffff:127.0.0.1 - ERROR: {"message":"Cannot GET /fifa/fifalive/gen4title/data/disabledregion.json","error":"Not Found","statusCode":404} -path: /fifa/fifalive/gen4title/data/disabledregion.json
+
+        6/10/25, 10:28:51 PM -IP: ::ffff:127.0.0.1 - ERROR: null value in column "user_id" of relation "roombooking" violates not-null constraint -path: /api/v1/roombookings
+
+        6/10/25, 10:30:29 PM -IP: ::ffff:127.0.0.1 - ERROR: null value in column "user_id" of relation "roombooking" violates not-null constraint -path: /api/v1/roombookings
+
+        6/10/25, 10:34:41 PM -IP: ::ffff:127.0.0.1 - ERROR: relation "profile" does not exist -path: /api/v1/profiles
+
+        6/10/25, 10:48:56 PM -IP: ::ffff:127.0.0.1 - ERROR: {"message":"Room  with  id  1  &  2  not found","error":"Not Found","statusCode":404} -path: /api/v1/roombookings
+
+        6/10/25, 10:52:38 PM -IP: ::ffff:127.0.0.1 - ERROR: {"message":"Room  with  id  1  &  2  not found","error":"Not Found","statusCode":404} -path: /api/v1/roombookings
+
+        6/10/25, 11:00:44 PM -IP: ::1 - ERROR: {"message":"Forbidden resource","error":"Forbidden","statusCode":403} -path: /api/v1/profiles?email=mike%40gmail.com
+
+        6/10/25, 11:46:59 PM -IP: ::ffff:127.0.0.1 - ERROR: {"message":"Unauthorized","statusCode":401} -path: /api/v1/rooms
+
+        6/10/25, 11:47:00 PM -IP: ::ffff:127.0.0.1 - ERROR: {"message":"Unauthorized","statusCode":401} -path: /api/v1/rooms
+
+        6/10/25, 11:47:02 PM -IP: ::ffff:127.0.0.1 - ERROR: {"message":"Unauthorized","statusCode":401} -path: /api/v1/rooms
+
+        6/10/25, 11:50:42 PM -IP: ::ffff:127.0.0.1 - ERROR: {"message":"Forbidden resource","error":"Forbidden","statusCode":403} -path: /api/v1/profiles
+
+        6/11/25, 4:50:11 PM -IP: ::1 - ERROR: {"message":"Bad control character in string literal in JSON at position 37 (line 2 column 36)","error":"Bad Request","statusCode":400} -path: /api/v1/auth/forget-password
+
+        6/11/25, 4:50:29 PM -IP: ::1 - ERROR: Cannot read properties of undefined (reading 'createTransport') -path: /api/v1/auth/forget-password
+
+        6/11/25, 4:53:07 PM -IP: ::1 - ERROR: Error sending email -path: /api/v1/auth/forget-password
+
+        6/11/25, 4:56:22 PM -IP: ::1 - ERROR: Error sending email -path: /api/v1/auth/forget-password
+
+        6/12/25, 10:10:50 AM -IP: ::ffff:172.18.0.1 - ERROR: {"message":"Cannot GET /","error":"Not Found","statusCode":404} -path: /
+
+        6/12/25, 10:10:50 AM -IP: ::ffff:172.18.0.1 - ERROR: {"message":"Cannot GET /favicon.ico","error":"Not Found","statusCode":404} -path: /favicon.ico
+
+        6/12/25, 10:11:55 AM -IP: ::ffff:172.18.0.1 - ERROR: {"message":"Unauthorized","statusCode":401} -path: /api/v1/admins
+
+        6/12/25, 10:15:15 AM -IP: ::ffff:172.18.0.1 - ERROR: {"message":"User with  email mike@gmail.comNot Found ","error":"Not Found","statusCode":404} -path: /api/v1/auth/signin
+
+        6/12/25, 10:16:10 AM -IP: ::ffff:172.18.0.1 - ERROR: {"message":"Bad control character in string literal in JSON at position 29","error":"Bad Request","statusCode":400} -path: /api/v1/auth/signin
+
+        6/12/25, 10:16:25 AM -IP: ::ffff:172.18.0.1 - ERROR: {"message":"User with  email mike@gmail.comNot Found ","error":"Not Found","statusCode":404} -path: /api/v1/auth/signin
+
+        6/12/25, 10:28:35 AM -IP: ::ffff:172.18.0.1 - ERROR: {"message":"Forbidden resource","error":"Forbidden","statusCode":403} -path: /api/v1/admins
+
+        6/12/25, 10:31:16 AM -IP: ::ffff:172.18.0.1 - ERROR: {"message":"Forbidden resource","error":"Forbidden","statusCode":403} -path: /api/v1/useraccess
+
+        6/12/25, 10:39:40 AM -IP: ::ffff:172.18.0.1 - ERROR: duplicate key value violates unique constraint "REL_864af47fcb453d288e6f3cad40" -path: /api/v1/users
+
+        6/12/25, 10:40:03 AM -IP: ::ffff:172.18.0.1 - ERROR: {"message":"Forbidden resource","error":"Forbidden","statusCode":403} -path: /api/v1/users
+
+        6/12/25, 11:42:28 AM -IP: ::ffff:172.18.0.1 - ERROR: {"message":"Unauthorized","statusCode":401} -path: /api/v1/admins
+
+        6/12/25, 12:03:23 PM -IP: ::ffff:172.18.0.1 - ERROR: {"message":"Unauthorized","statusCode":401} -path: /api/v1/admins
+
+        6/12/25, 12:06:54 PM -IP: ::ffff:172.18.0.1 - ERROR: {"message":"Forbidden resource","error":"Forbidden","statusCode":403} -path: /api/v1/admins
+
+        6/12/25, 12:08:10 PM -IP: ::ffff:172.18.0.1 - ERROR: {"message":"Forbidden resource","error":"Forbidden","statusCode":403} -path: /api/v1/profiles
+
+        6/12/25, 3:34:44 PM -IP: ::ffff:172.18.0.1 - ERROR: {"message":"Unauthorized","statusCode":401} -path: /api/v1/admins
+
+        6/12/25, 3:45:33 PM -IP: ::1 - ERROR: {"message":"Cannot GET /","error":"Not Found","statusCode":404} -path: /
+
+        6/12/25, 3:45:33 PM -IP: ::1 - ERROR: {"message":"Cannot GET /favicon.ico","error":"Not Found","statusCode":404} -path: /favicon.ico
+
+        6/12/25, 3:48:24 PM -IP: ::1 - ERROR: {"message":"Unauthorized","statusCode":401} -path: /api/v1/admins
+
+        6/12/25, 4:05:10 PM -IP: ::1 - ERROR: {"message":"Unauthorized","statusCode":401} -path: /api/v1/profiles
+
+        6/12/25, 4:12:29 PM -IP: ::ffff:127.0.0.1 - ERROR: {"message":"Unauthorized","statusCode":401} -path: /api/v1/profiles
+
+        6/12/25, 4:14:28 PM -IP: ::ffff:127.0.0.1 - ERROR: ThrottlerException: Too Many Requests -path: /api/v1/profiles
+
+        6/12/25, 4:15:13 PM -IP: ::ffff:127.0.0.1 - ERROR: ThrottlerException: Too Many Requests -path: /api/v1/profiles
+
+        6/12/25, 8:10:48 PM -IP: ::ffff:172.18.0.1 - ERROR: {"message":"Cannot GET /fifa/fifalive/gen4title/data/disabledregion.json","error":"Not Found","statusCode":404} -path: /fifa/fifalive/gen4title/data/disabledregion.json
+
+        6/12/25, 9:18:47 PM -IP: ::ffff:172.18.0.1 - ERROR: {"message":"Cannot GET /fifa/fifalive/gen4title/data/disabledregion.json","error":"Not Found","statusCode":404} -path: /fifa/fifalive/gen4title/data/disabledregion.json
+
+        6/13/25, 9:03:21 AM -IP: ::ffff:127.0.0.1 - ERROR: {"message":"Unauthorized","statusCode":401} -path: /api/v1/profiles
+
+        6/13/25, 9:03:48 AM -IP: ::ffff:127.0.0.1 - ERROR: {"message":"Unauthorized","statusCode":401} -path: /api/v1/profiles
+
+        6/13/25, 9:15:36 AM -IP: ::ffff:127.0.0.1 - ERROR: i is not defined -path: /api/v1/admins
+
+        6/13/25, 9:15:48 AM -IP: ::ffff:127.0.0.1 - ERROR: i is not defined -path: /api/v1/admins
+
+        6/13/25, 9:15:50 AM -IP: ::ffff:127.0.0.1 - ERROR: i is not defined -path: /api/v1/admins
+
+        6/13/25, 9:16:22 AM -IP: ::ffff:127.0.0.1 - ERROR: i is not defined -path: /api/v1/admins
+
+        6/13/25, 9:29:48 AM -IP: ::ffff:127.0.0.1 - ERROR: {"message":"Unauthorized","statusCode":401} -path: /api/v1/admins
+
+        6/13/25, 9:30:31 AM -IP: ::ffff:127.0.0.1 - ERROR: column admin.email does not exist -path: /api/v1/admins
+
+        6/13/25, 9:31:52 AM -IP: ::ffff:127.0.0.1 - ERROR: column admin.first_name does not exist -path: /api/v1/admins
+
+        6/13/25, 9:31:58 AM -IP: ::ffff:127.0.0.1 - ERROR: column admin.first_name does not exist -path: /api/v1/admins
+
+        6/13/25, 9:32:46 AM -IP: ::ffff:127.0.0.1 - ERROR: invalid reference to FROM-clause entry for table "admin" -path: /api/v1/admins
+
+        6/13/25, 9:34:07 AM -IP: ::ffff:127.0.0.1 - ERROR: Relation with property path admin in entity was not found. -path: /api/v1/admins
+
+        6/13/25, 10:39:00 AM -IP: ::ffff:127.0.0.1 - ERROR: {"message":"Unauthorized","statusCode":401} -path: /api/v1/profiles
+
+        6/13/25, 11:40:17 AM -IP: ::ffff:127.0.0.1 - ERROR: {"message":"Unauthorized","statusCode":401} -path: /api/v1/profiles
+
+        6/13/25, 11:40:19 AM -IP: ::ffff:127.0.0.1 - ERROR: {"message":"Unauthorized","statusCode":401} -path: /api/v1/profiles
+
+        6/22/25, 6:17:11 PM -IP: ::ffff:127.0.0.1 - ERROR: {"message":"User with  email mike@gmail.comNot Found ","error":"Not Found","statusCode":404} -path: /api/v1/auth/signin

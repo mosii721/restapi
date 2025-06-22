@@ -1,0 +1,22 @@
+#Things you dont want to push your code into production with
+node_modules
+npm-debug.log
+dist
+.git
+.gitignore
+README.md
+.env*
+!.env.example
+.nyc_output
+coverage
+.vscode
+.DS_Store
+*.md
+!package*.json
+!pnpm*.yaml
+applogs
+image
+test
+jest.config.js
+*.test.ts
+*.spec.ts

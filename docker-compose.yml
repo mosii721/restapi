@@ -8,7 +8,7 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 1234
-      POSTGRES_DB: hostel-system
+      POSTGRES_DB: hostel-sys
       POSTGRES_INITDB_ARGS: "--encoding=UTF-8"
     ports:
       - "5432:5432"
@@ -27,6 +27,40 @@ services:
       - redisdata:/data
     networks:
       - app-network
+  nest-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nest-app
+    ports:
+      - "8000:8000"
+    environment:
+      - NODE_ENV=development
+      - PORT=8000
+      - DB_HOST=hostel-sys-db
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASSWORD=1234
+      - DB_DATABASE=hostel-sys
+      - DB_SYNC=true
+      - DB_LOGGING=true
+      - REDIS_URL=redis://:${REDIS_PASSWORD:-1234}@redis:6379
+      - JWT_ACCESS_TOKEN_SECRET=${JWT_ACCESS_TOKEN_SECRET:-your_access_token_secret}
+      - JWT_ACCESS_TOKEN_EXPIRATION_TIME=${JWT_ACCESS_TOKEN_EXPIRATION_TIME:-15m}
+      - JWT_REFRESH_TOKEN_SECRET=${JWT_REFRESH_TOKEN_SECRET:-your_refresh_token_secret}
+      - JWT_REFRESH_TOKEN_EXPIRATION_TIME=${JWT_REFRESH_TOKEN_EXPIRATION_TIME:-7d}
+      - RESET_TOKEN_SECRET=${RESET_TOKEN_SECRET:-your_reset_token_secret}
+      - RESET_TOKEN_EXPIRES_IN=${RESET_TOKEN_EXPIRES_IN:-10m}
+      - SMTP_USER=${SMTP_USER:-91111mike@gmail.com}
+      - SMTP_PASS=${SMTP_PASS:-whzq ddeh udey dnzm}
+    depends_on:
+      - redis
+      - hostel-sys-db
+    networks:
+      - app-network
+    volumes:
+      - .:/app
+      - /app/node_modules
 
 volumes:
   pgdata:

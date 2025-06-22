@@ -1,6 +1,6 @@
-@url = http://localhost:8000/api/v1                 
-@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoibWlrZUBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDk1ODg0NDMsImV4cCI6MTc0OTU4OTM0M30.0YgDJEpYeYYm5ly94eyLWB-pPLbJ1hE4ZlcrQxsFSeA
-@refreshToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoibWlrZUBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NDk1ODg0NDMsImV4cCI6MTc1MDE5MzI0M30.fShPulchxU-70u7N9CwsHDDzxdjsJHVgeV2nv42qODA
+@url = http://localhost:3000/api/v1                 
+@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsImVtYWlsIjoibWlrZUBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NTA2MDU0ODUsImV4cCI6MTc1MDYwNjM4NX0.DYNFqj9yqhkilAQRa-qPRbMMRDlTck-odKcrrAnJEfQ
+@refreshToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsImVtYWlsIjoibWlrZUBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NTA2MDU0ODUsImV4cCI6MTc1MTIxMDI4NX0.jPNEKoNSEeJmvcwqDVkjNbSbFGhf2yJU5hcDLJzsAGw
 
 @useraccessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsImVtYWlsIjoia2lwcm9wQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzQ5NTAxNDM3LCJleHAiOjE3NDk1MDIzMzd9.EAepyksiISalIsTjZYadHIhGMNDAOkwnaXQrQl3SGsg
 @userrefreshToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsImVtYWlsIjoia2lwcm9wQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzQ5NTAxNDM3LCJleHAiOjE3NTAxMDYyMzd9.QFext7YQhdFhf0uHF_VlD7lsaRlF2VGIsOkXyephBNY
@@ -64,7 +64,8 @@ GET {{url}}/profiles
 Authorization: Bearer {{guestaccessToken}}
 
 ###
-GET {{url}}/profiles?email=Mike@gmail.com
+GET {{url}}/profiles?email=mike@gmail.com
+Authorization: Bearer {{accessToken}}
 
 ###
 GET {{url}}/profiles/1
@@ -104,7 +105,7 @@ Content-Type: application/json
   "first_name": "Mike",
   "last_name":"Kiprop",
   "phone_number":"0733031821",
-  "email":"mk@gmail.com",
+  "email":"mikealwanga97@gmail.com",
   "password":"password",
   "role":"guest"
 }

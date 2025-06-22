@@ -52,14 +52,15 @@ export class ProfilesService {
     if (email) {
       profiles= await this.profileRepository.find({
         where:{email},
+        select:['first_name','last_name','phone_number','email','role','createdAt','updatedAt'],
         relations:['admin','user']
       }) ;
     }else{
       profiles=await this.profileRepository.find({
+        select:['first_name','last_name','phone_number','email','role','createdAt','updatedAt'],
         relations:['admin','user']
       }) ;
     }
-    console.log('adminfoud');
     return  profiles.map((profile) => this.excludePassword(profile));
   }
 

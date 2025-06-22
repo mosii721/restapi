@@ -29,7 +29,11 @@ export class ProfilesController {
   @Roles(Role.ADMIN)
   @Get()
   findAll(@Query('email')email?:string) {
-    return this.profilesService.findAll(email);
+    if (email){
+      return this.profilesService.findAll(email);
+    }
+    return this.profilesService.findAll()
+    
   }
 
   @Roles(Role.ADMIN,Role.USER)

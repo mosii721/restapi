@@ -27,13 +27,20 @@ export class AdminsService {
   }
 
   async findAll(name?: string) {
-    if (name) {
-      return await  this.adminRepository.find({
-        where:{adminprofile:{first_name:name},},
-        relations:['adminprofile']
-      });
+    const admin = await this.adminRepository.find({
+      where:{adminprofile:{first_name:name},},
+      relations:{adminprofile:true}
+    });
+    if(!admin){
+      throw new NotFoundException('Admin not found')
     }
-    return await this.adminRepository.find({relations:['adminprofile']});
+    return admin.map((admin) => {
+      if(admin.adminprofile){
+        const { password,hashedRefreshToken, ...safeAdmin} = admin.adminprofile
+        admin.adminprofile = Object.assign(Object.create(Object.getPrototypeOf(admin.adminprofile)), safeAdmin)
+      }
+      return admin;
+    });
   }
 
   async findOne(id: number) {

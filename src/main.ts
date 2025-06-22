@@ -32,7 +32,7 @@ async function bootstrap() {
   app.useGlobalFilters(new AllExceptionsFilter(httpAdapter));
 
   const config = new DocumentBuilder().setTitle('Hostel API')
-    .setDescription('This is an API for managing hostels')
+    .setDescription('This is an API for managing hostels,')
     .setVersion('1.0')
     .addTag('auth','Authentication Endpoints')
     .addTag('admins','Admin Managment Endpoints')
@@ -47,8 +47,8 @@ async function bootstrap() {
     .addTag('userfeedbacks','Userfeedback Managment Endpoints')
     .addTag('users','User Managment Endpoints')
     .addBearerAuth()
-    .addServer('http://localhost:8000/','Local Development Server')
-    .addServer('http://api.hostel.com/','Production Server')
+    // .addServer('http://localhost:8000/','Local Development Server')
+    // .addServer('http://api.hostel.com/','Production Server')
     .build();
 
   const documentFactory = SwaggerModule.createDocument(app,config);

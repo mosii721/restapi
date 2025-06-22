@@ -10,6 +10,7 @@ import { AtStrategy, RtStrategy } from './strategies';
 
 
 
+
 @Module({
   imports:[DatabaseModule,TypeOrmModule.forFeature([Profile]),JwtModule.register({
     global:true,

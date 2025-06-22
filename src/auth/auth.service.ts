@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { CreateAuthDto } from './dto/create-auth.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Profile } from 'src/profiles/entities/profile.entity';
@@ -6,7 +6,16 @@ import { Repository } from 'typeorm';
 import  * as  Bcrypt from 'bcrypt';
 import  { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
+import * as nodemailer from 'nodemailer';
 
+
+
+export interface JwtPayload {
+  sub: number;
+  email: string;
+  iat?: number;
+  exp?: number;
+}
 @Injectable()
 export class AuthService {
     constructor(@InjectRepository(Profile) private profileRepository:Repository<Profile>,
@@ -59,6 +68,58 @@ export class AuthService {
     })
   }
 
+  
+
+  async forgetPassword(email:string){
+    const foundUser =  await this.profileRepository.findOne({
+      where:{email},
+    })
+    if(!foundUser){
+      throw new NotFoundException(`User with email ${email} not found`)
+    }
+    const resetToken = await this.jwtService.signAsync(
+      {
+          sub: foundUser.id,
+          email: email,
+        },
+        {
+          secret: this.configService.getOrThrow<string>('RESET_TOKEN_SECRET'),
+          expiresIn: this.configService.getOrThrow<string>('RESET_TOKEN_EXPIRES_IN')
+        },
+    )
+    await this.sendResetPasswordEmail(email,resetToken);
+    return resetToken;
+  }
+
+  private async sendResetPasswordEmail(email:string,token:string){
+    const transport = nodemailer.createTransport({
+      service:'gmail',
+      auth:{
+        user:this.configService.getOrThrow<string>('SMTP_USER'),
+        pass:this.configService.getOrThrow<string>('SMTP_PASS'),
+      },
+      port: 587,
+      secure: false,
+    })
+
+    const content = `
+                      <p>To reset your password,please use this reset token${token}</P>
+                      <p><strong>${token}</strong></p>
+                    `
+
+    try {
+      await transport.sendMail({
+        from:`${this.configService.getOrThrow<string>('SMTP_USER')}`,
+        to:email,
+        subject:'Password Reset',
+        html:content,
+      })
+      console.log(`Email sent to ${email}`)
+    } catch (error) {
+      console.error('Error sending email',error)
+      throw new Error('Error sending email')
+    }
+  }
 
   async signIn(createAuthDto: CreateAuthDto) {
     const foundUser = await this.profileRepository.findOne({
@@ -134,6 +195,29 @@ async refreshTokens(id:number, refreshToken:string) {
     
     await this.saveRefreshToken(foundUser .id,newRefreshToken);
     return {accessToken,refreshToken:newRefreshToken};
+}
+
+async resetPassword(token:string, newPassword:string){
+let payload: JwtPayload;
+try{
+  payload= await this.jwtService.verifyAsync<JwtPayload>(token,{
+    secret: this.configService.getOrThrow<string>('RESET_TOKEN_SECRET'),
+  })
+}catch{
+  throw new BadRequestException('Invalid token');
+}
+
+const founduser =await this.profileRepository.findOne({
+  where:{id:payload.sub},
+  select:['id','email'],
+});
+if(!founduser){
+  throw new NotFoundException(`User not found`);
+}
+const hashedPassword = await Bcrypt.hash(newPassword,10);
+founduser.password = hashedPassword;
+
+await this.profileRepository.save(founduser);
 }
 
 }

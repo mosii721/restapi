@@ -28,7 +28,9 @@ export class AdminsController {
   @Roles(Role.ADMIN)
   @Get()
   findAll(@Query('name') name?: string) {
-    return this.adminsService.findAll(name);
+    if (name){    return this.adminsService.findAll(name);
+}
+return this.adminsService.findAll()
   }
 
   @Roles(Role.ADMIN)

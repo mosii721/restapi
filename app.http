@@ -1,4 +1,5 @@
-@url = http://localhost:3000/api/v1                 
+#@url = http://localhost:3000/api/v1
+@url = 'https://restapi-1-bn4u.onrender.com/api/v1'                 
 @accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsImVtYWlsIjoibWlrZUBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NTA2MDU0ODUsImV4cCI6MTc1MDYwNjM4NX0.DYNFqj9yqhkilAQRa-qPRbMMRDlTck-odKcrrAnJEfQ
 @refreshToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsImVtYWlsIjoibWlrZUBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NTA2MDU0ODUsImV4cCI6MTc1MTIxMDI4NX0.jPNEKoNSEeJmvcwqDVkjNbSbFGhf2yJU5hcDLJzsAGw
 

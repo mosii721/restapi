@@ -26,7 +26,9 @@ export class ProfilesController {
       required: false,
       description: 'Search for Profile by email'
     })
-  @Roles(Role.ADMIN)
+
+  @Public()
+  //@Roles(Role.ADMIN)
   @Get()
   findAll(@Query('email')email?:string) {
     if (email){

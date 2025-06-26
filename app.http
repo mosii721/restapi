@@ -60,6 +60,10 @@ Authorization: Bearer {{accessToken}}
 
 ###
 GET {{url}}/profiles
+
+
+###
+GET {{url}}/profiles
 Authorization: Bearer {{useraccessToken}}
 
 ###

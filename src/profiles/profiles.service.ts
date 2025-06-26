@@ -58,7 +58,7 @@ export class ProfilesService {
     }else{
       profiles=await this.profileRepository.find({
         select:['first_name','last_name','phone_number','email','role','createdAt','updatedAt'],
-        relations:['admin','user']
+        // relations:['admin','user']
       }) ;
     }
     return  profiles.map((profile) => this.excludePassword(profile));
